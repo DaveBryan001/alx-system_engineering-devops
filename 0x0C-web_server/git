@@ -7,5 +7,5 @@ cd alx-system_engineering-devops
 cd 0x0C-web_server
 git add *
 git commit -m "redirection"
-git push origin main
+git push
 echo "redirection completed"
