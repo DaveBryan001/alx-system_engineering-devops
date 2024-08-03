@@ -1,3 +1,5 @@
+# config file for ssh
+
 Host 514932-web-01
     HostName 54.161.237.13
     User ubuntu
