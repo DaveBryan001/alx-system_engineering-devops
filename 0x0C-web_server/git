@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# git clone https://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@github.com/DaveBryan001/alx-system_engineering-devops.git
+
+
+cd alx-system_engineering-devops
+cd 0x0C-web_server
+git add *
+git commit -m "redirection"
+git push origin main
+echo "redirection completed"

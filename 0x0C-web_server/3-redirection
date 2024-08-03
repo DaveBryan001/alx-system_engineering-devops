@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# a bash script that redirects to another page
+
+# Update package lists
+sudo apt update
+
+# Install Nginx
+sudo apt install -y nginx
+
+# Create a custom index.html page with the required content
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+# Configure Nginx to include the redirection
+# Append the redirection directive to the default server block in the Nginx configuration file
+sudo sed -i '/server_name _;/a \\tlocation /redirect_me {\n\t\treturn 301 http://localhost/;\n\t}' /etc/nginx/sites-available/default
+
+# Ensure the default Nginx configuration listens on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:80;/g' /etc/nginx/sites-available/default
+
+# Test the Nginx configuration
+sudo nginx -t
+
+sudo service nginx restart
+sudo service nginx reload
